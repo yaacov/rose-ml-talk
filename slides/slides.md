@@ -7,6 +7,8 @@
 <p class="author">November, 2023<p>
 <p class="author">Yaacov Zamir <a>&lt;yzamir@redhat.com&gt;</a><p>
 
+<p class="author">Github <a href="https://github.com/yaacov/rose-ml-talk">https://github.com/yaacov/rose-ml-talk</a><p>
+
 ---
 
 #### Agenda
