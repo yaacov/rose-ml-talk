@@ -261,7 +261,7 @@ And the drivative is:
 
 # Demo
 
-<p class="subtitle">Python code implementing a perceptron</p>
+<p class="subtitle">The perceptron</p>
 
 <img src="images/boolean.webp" height="200" >
 

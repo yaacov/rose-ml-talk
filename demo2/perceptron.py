@@ -11,7 +11,7 @@ inputs = np.array([[0, 0],
                    [0, 1],
                    [1, 0],
                    [1, 1]])
-outputs = np.array([[0], [0], [0], [1]])
+outputs = np.array([[0], [1], [1], [1]])
 
 # Initialize weights with a small random value
 np.random.seed()
