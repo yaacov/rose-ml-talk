@@ -1,64 +1,77 @@
 import numpy as np
 
-from activation_functions import sigmoid
-from activation_functions_derivative import sigmoid_derivative
-from loss_functions import mse_loss
-from loss_functions_derivative import mse_derivative
+# Define the classification function
+def classify(x):
+    if x > 0.5:
+        return 1
+    else:
+        return 0
+
+# Vectorize the classify function
+vectorized_classify = np.vectorize(classify)
+
+# Sigmoid and its derivative
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def sigmoid_derivative(x):
+    return x * (1 - x)
+
+# Mean Squared Error Loss and its derivative
+def mse_loss(y_true, y_pred):
+    return ((y_true - y_pred) ** 2).mean()
+
+def mse_derivative(y_true, y_pred):
+    return 2 * (y_pred - y_true) / y_true.size
+
+# Define the Perceptron class
+class Perceptron:
+    def __init__(self, input_size, learning_rate=0.1):
+        self.weights = np.random.randn(input_size, 1)
+        self.bias = np.random.randn(1)
+        self.learning_rate = learning_rate
+
+    # Predict function
+    def predict(self, input_data):
+        weighted_sum = np.dot(input_data, self.weights) + self.bias
+        activated_output = sigmoid(weighted_sum)
+        return activated_output
+
+    # Train function
+    def train(self, input_data, output_data, epochs):
+        for epoch in range(epochs):
+            # Forward pass
+            activated_output = self.predict(input_data)
+
+            # Compute loss
+            loss = mse_loss(output_data, activated_output)
+
+            # Backward pass
+            error_derivative = mse_derivative(activated_output, output_data)
+            adjustments = error_derivative * sigmoid_derivative(activated_output)
+
+            # Update weights and bias
+            self.weights += np.dot(input_data.T, adjustments) * self.learning_rate
+            self.bias += np.sum(adjustments, axis=0) * self.learning_rate
+
+            # Classification, using "cut of" at 0.5
+            classes =  np.vectorize(lambda x: 1 if x > 0.5 else 0 )(activated_output)
+
+            if epoch % 20 == 0:
+                print(f"Epoch {epoch}")
+                print(f"Loss: {loss}")
+                print(f"Weights: {self.weights.T}")
+                print(f"Bias: {self.bias}")
+                print(f"{classes.T} \n")
 
 
-# Define the input and output for the AND truth table
+# Define the input and output for a truth table
+learning_rate = 0.4
 inputs = np.array([[0, 0],
                    [0, 1],
                    [1, 0],
                    [1, 1]])
 outputs = np.array([[0], [1], [1], [1]])
 
-# Initialize weights with a small random value
-np.random.seed()
-weights = np.random.rand(2, 1)
-bias = np.random.rand(1)
-learning_rate = 0.4
-
-# Define a function to predict the output using the trained weights and bias
-def predict(input_data):
-    weighted_sum = np.dot(input_data, weights) + bias
-    activated_output = sigmoid(weighted_sum)
-    return activated_output
-
-# Display the weights and bias before training
-print("Weights before training:")
-print(weights)
-print("\nBias before training:")
-print(bias)
-
-# Train the neural network
-for epoch in range(40):
-    # Get model predictions
-    input_layer = inputs
-    activated_output = predict(input_layer)
-    
-    # Get the loss estimate
-    loss = mse_loss(activated_output, outputs)
-
-    # Calculate the error
-    error_derivative = mse_derivative(activated_output, outputs)
-    
-    # Adjust weights and bias using backpropagation
-    adjustments = error_derivative * sigmoid_derivative(activated_output)
-    weights += np.dot(input_layer.T, adjustments) * learning_rate
-    bias += np.sum(adjustments, axis=0) * learning_rate
-
-    # Display the weights and bias after training
-    print(f"\nWeight [epoch = {epoch}]:")
-    print(weights)
-    print(f"Bias after [epoch = {epoch}]:")
-    print(bias)
-    print(f"Loss [epoch = {epoch}]:")
-    print(loss)
-
-    # Test the neural network with a new input
-    print("\nTesting the trained neural network:")
-    for i, input_data in enumerate(inputs):
-        activated_output = predict(input_data)
-
-        print(f"Input: {input_data} Output: {1 if activated_output > 0.5 else 0}")
+perceptron = Perceptron(2, learning_rate)
+perceptron.train(inputs, outputs, epochs=200)
