@@ -314,6 +314,8 @@ bias += np.sum(adjustments, axis=0) * learning_rate
 
 Run a perceptron
 
+<img src="images/perceptron.png" height="100" >
+
 ```bash
 cd demo2
 ```
@@ -326,10 +328,24 @@ python perceptron.py
 
 Run a neural network
 
+<img src="images/neuralnetwork.png" height="100" >
 
 ```bash
 python neuralnetwork.py
 ```
+
+---
+
+Forward Propagation for a neural network with n layers:
+`$$ \mathbf{a}_{n} = g_{n-1}\left( \cdots g_{1}\left( g_{0}\left(\mathbf{a}_{0} \mathbf{w}_{0} + \mathbf{b}_{0}\right) \mathbf{w}_{1} + \mathbf{b}_{1} \right) \cdots \right) \mathbf{w}_{n-1} + \mathbf{b}_{n-1} $$`
+
+Backpropagation using chain rule for the gradients of the loss function L with respect to the weights:
+`$$ \frac{\partial L}{\partial \mathbf{w}_{i}} = \frac{\partial L}{\partial \mathbf{a}_{n}} \cdot \frac{\partial \mathbf{a}_{n}}{\partial \mathbf{a}_{n-1}} \cdot \ldots \cdot \frac{\partial \mathbf{a}_{i+1}}{\partial \mathbf{a}_{i}} \cdot \frac{\partial \mathbf{a}_{i}}{\partial \mathbf{w}_{i}} $$`
+
+And for the bias:
+`$$ \frac{\partial L}{\partial \mathbf{b}_{i}} = \frac{\partial L}{\partial \mathbf{a}_{n}} \cdot \frac{\partial \mathbf{a}_{n}}{\partial \mathbf{a}_{n-1}} \cdot \ldots \cdot \frac{\partial \mathbf{a}_{i+1}}{\partial \mathbf{a}_{i}} \cdot \frac{\partial \mathbf{a}_{i}}{\partial \mathbf{b}_{i}} $$`
+
+<img src="images/backprop.png" height="100" >
 
 ---
 
