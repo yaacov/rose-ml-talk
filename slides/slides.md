@@ -312,12 +312,23 @@ bias += np.sum(adjustments, axis=0) * learning_rate
 
 ---
 
-Run the demo
-
+Run a perceptron
 
 ```bash
 cd demo2
+```
+
+```bash
 python perceptron.py
+```
+
+---
+
+Run a neural network
+
+
+```bash
+python neuralnetwork.py
 ```
 
 ---

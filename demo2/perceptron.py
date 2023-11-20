@@ -62,11 +62,11 @@ class Perceptron:
                 print(f"Loss: {loss}")
                 print(f"Weights: {self.weights.T}")
                 print(f"Bias: {self.bias}")
-                print(f"{classes.T} \n")
+                print(f"{classes.T} \n---")
 
 
 # Define the input and output for a truth table
-learning_rate = 0.4
+learning_rate = 0.8
 inputs = np.array([[0, 0],
                    [0, 1],
                    [1, 0],

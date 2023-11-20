@@ -61,15 +61,15 @@ class NeuralNetwork:
                 print(f"Loss: {loss}")
                 print(f"Weights: {self.weights}")
                 print(f"Bias: {self.biases}")
-                print(f"{classes.T} \n")
+                print(f"{classes.T} \n---")
 
 # Example usage
-learning_rate = 0.4
+learning_rate = 0.8
 inputs = np.array([[0, 0],
                    [0, 1],
                    [1, 0],
                    [1, 1]])
-outputs = np.array([[0], [1], [1], [1]])
+outputs = np.array([[0], [1], [1], [0]])
 
 nn = NeuralNetwork([2, 2, 1])
-nn.train(inputs, outputs, learning_rate, epochs=1000)
+nn.train(inputs, outputs, learning_rate, epochs=4000)
