@@ -273,8 +273,6 @@ And the drivative is:
 
 <p class="img"><img src="images/andor.png" height="100" ></p>
 
-<p class="img"><img src="images/classification.png" height="200" ></p>
-
 ---
 
 Labeled some data
