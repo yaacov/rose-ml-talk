@@ -1,5 +1,7 @@
 # ROSE ML Talk
 
+[slides](https://yaacov.github.io/rose-ml-talk/slides/)
+
 ## Serve slides:
 
 ```bash
