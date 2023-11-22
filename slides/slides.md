@@ -263,9 +263,11 @@ And the drivative is:
 
 # Demo
 
-<p class="subtitle">The perceptron</p>
+<p class="subtitle">Perceptrons and deep neural networks</p>
 
-<img src="images/boolean.webp" height="200" >
+<img src="images/perceptron.png" height="50" >
+
+<img src="images/neuralnetwork.png" height="50" >
 
 ---
 
