@@ -312,6 +312,14 @@ bias += np.sum(adjustments, axis=0) * learning_rate
 
 ---
 
+`$$ u = a_0 w_0 + a_1 w_1 + b $$`
+
+<p class="img"><img src="images/and.png" height="100" ></p>
+<p class="img"><img src="images/or.png" height="100" ></p>
+<p class="img"><img src="images/xor.png" height="100" ></p>
+
+---
+
 Run a perceptron
 
 <img src="images/perceptron.png" height="100" >
@@ -323,17 +331,6 @@ cd demo2
 ```bash
 python perceptron.py
 ```
-
----
-
-Run a neural network
-
-<img src="images/neuralnetwork.png" height="100" >
-
-```bash
-python neuralnetwork.py
-```
-
 ---
 
 Forward Propagation for a neural network with n layers:
@@ -346,6 +343,16 @@ And for the bias:
 `$$ \frac{\partial L}{\partial \mathbf{b}_{i}} = \frac{\partial L}{\partial \mathbf{a}_{n}} \cdot \frac{\partial \mathbf{a}_{n}}{\partial \mathbf{a}_{n-1}} \cdot \ldots \cdot \frac{\partial \mathbf{a}_{i+1}}{\partial \mathbf{a}_{i}} \cdot \frac{\partial \mathbf{a}_{i}}{\partial \mathbf{b}_{i}} $$`
 
 <img src="images/backprop.png" height="100" >
+
+---
+
+Run a neural network
+
+<img src="images/neuralnetwork.png" height="100" >
+
+```bash
+python neuralnetwork.py
+```
 
 ---
 
