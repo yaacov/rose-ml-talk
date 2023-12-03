@@ -55,7 +55,7 @@ class Perceptron:
             self.bias += np.sum(adjustments, axis=0) * self.learning_rate
 
             # Classification, using "cut of" at 0.5
-            classes =  np.vectorize(lambda x: 1 if x > 0.5 else 0 )(activated_output)
+            classes =  vectorized_classify(activated_output)
 
             if epoch % 20 == 0:
                 print(f"Epoch {epoch}")
@@ -71,7 +71,7 @@ inputs = np.array([[0, 0],
                    [0, 1],
                    [1, 0],
                    [1, 1]])
-outputs = np.array([[0], [1], [1], [1]])
+outputs = np.array([[0], [0], [0], [1]])
 
 perceptron = Perceptron(2, learning_rate)
 perceptron.train(inputs, outputs, epochs=200)
